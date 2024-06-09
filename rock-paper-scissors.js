@@ -19,6 +19,7 @@ function getComputerChoice(){
     console.log(computerChoice);
 }
 
+
 //use prompt to get human choice for rock paper scissors making sure user picks valid choice
 function getHumanChoice(){
     let check=1;
@@ -35,11 +36,44 @@ function getHumanChoice(){
     //console.log(humanChoice);
 }
 
+//eventListener to find selection for buttons
+const buttons=document.querySelectorAll("button");
+console.log(buttons);
+ //iterate through buttons and change playerSelection depending on which button is pressed
+buttons.forEach((button)=> {
+    button.addEventListener("click",()=>{
+        //alert("button clicked!");
+        const playerSelection=button.textContent.toLowerCase();
+        console.log(`Human choice is ${playerSelection}`);
+        
+    });
+});
+//console.log(playerSelection);
+
+function playRound(humanChoice){
+    getComputerChoice();
+    console.log(`Computer choice is: ${computerChoice}`);
+    //console.log(humanChoice);
+    //console.log(computerChoice);
+    if(((computerChoice=="rock")&&(humanChoice=="scissors"))|((computerChoice=="paper")&&(humanChoice=="rock"))|((computerChoice=="scissors")&&(humanChoice=="paper"))){
+        alert(`Human chooses ${humanChoice} and Computer chooses ${computerChoice}.Computer wins!`);
+        computerScore++;
+    }
+    else if(((computerChoice=="rock")&&(humanChoice=="paper"))|((computerChoice=="paper")&&(humanChoice=="scissors"))|((computerChoice=="scissors")&&(humanChoice=="rock"))){
+        alert(`Human chooses ${humanChoice} and Computer chooses ${computerChoice}. Human wins!`);
+        humanScore++;
+    }
+    else {
+        alert(`Both Human and Computer choose ${humanChoice}. A tie!`);
+    }
+    //console.log(computerScore);
+    //console.log(humanScore);
+}
 
 
 //game to play 5 rounds - use variable gameRound to count. keep track of humanScore and computerScore, declare winner at end
 
-function playGame(){
+/*function playGame(){
 
     //initialize variables humanScore,computerScore and gameRound in game;
     let humanScore=0;
@@ -103,4 +137,4 @@ function playGame(){
     else {
         alert(`Wow! A final tie! Both have ${humanScore}`);
     }
-}
+}*/
